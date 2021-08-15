@@ -17,8 +17,8 @@ func main() {
 
 	//User構造体にアクセス
 	var u User
-	u.name = "taro"              
-	u.age = 30                   
+	u.name = "taro"
+	u.age = 30
 	fmt.Printf("name:%s", u.name)
 
 }

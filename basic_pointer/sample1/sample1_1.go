@@ -12,9 +12,10 @@ type Person struct {
 }
 
 func main() {
-    // ポインタ型の変数を宣言する
-    // pがポインタ変数
-    // *Personポインタ型
+
+    // *を使用することでポインタ型の変数を宣言することができる
+    //   pがポインタ変数
+    //   Personポインタ型
     var p *Person
 
     p = &Person{

@@ -13,10 +13,11 @@ type Person struct {
 
 func main() {
     // ポインタ型の変数を宣言する
-    // pがポインタ型変数
-    // *Personポインタ型
+    //   pがポインタ型変数
+    //   Personポインタ型
     var p *Person
 
+    // ポインタ型変数pにPersonのポインタを格納するので&を付与する
     p = &Person{
         Name: "太郎",
         Age:  20,
