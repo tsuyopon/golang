@@ -1,5 +1,5 @@
 /*
- * 
+ * 配列の初期化方法part1
  */
 package main
 

@@ -20,6 +20,8 @@ func funcB(chB chan <- string) {
 }
 
 func main() {
+
+    // 組み込み関数make()を使用する事で生成可能
     chA := make(chan string)
     chB := make(chan string)
     defer close(chA)
@@ -30,6 +32,7 @@ func main() {
     go funcB(chB)
     for {
         fmt.Print("for loop\n")
+        // チャネルオペレータの<-を用いる事で値の送受信が可能
         select {
         case msg := <- chA:
             fmt.Print("chA recieved\n")

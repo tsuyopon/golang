@@ -7,7 +7,9 @@ import "fmt"
 
 func main(){
 
-   mapEx := make(map[string]string)   // sample1.goとは異なり要素数を指定しないことも可能
+   // sample1.goとは異なり要素数を指定しないことも可能
+   // キャパシティを指定しない場合は必要十分なキャパシティが自動的に確保される。
+   mapEx := make(map[string]string)
 
    // 初期化後を出力
    fmt.Println(mapEx)
