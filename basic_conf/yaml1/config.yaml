@@ -1,0 +1,8 @@
+db:
+  host: 127.0.0.1
+  port: 3306
+  database: sample
+  username: user
+  password: ${DB_PASSWORD}
+
+apikey: ${API_KEY}
