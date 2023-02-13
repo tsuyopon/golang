@@ -32,8 +32,13 @@ func main() {
     go funcB(chB)
     for {
         fmt.Print("for loop\n")
-        // チャネルオペレータの<-を用いる事で値の送受信が可能
+
+        // 通常はチャネルに値が入っていない場合には処理がブロックされてしまう。
+        // ブロックせずに処理を行いたい場合には「select」を使います。
+
         select {
+        // チャネルオペレータの<-を用いる事で値の送受信が可能
+        // chAに値が入っていない場合には、次のcase(chB)へと処理が移ります。
         case msg := <- chA:
             fmt.Print("chA recieved\n")
             finflagA = true
