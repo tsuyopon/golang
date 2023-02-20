@@ -16,7 +16,7 @@ func receive(c chan<- string, message string) { // channel for send only
 
 // "<-chan" なので引数は送信チャネルが定義
 func send(c <-chan string) { // channel for recieve only
-    fmt.Println(<-c)              // チャンネルからの値を取得するので <-c とする。この演算子は受信演算子と呼ばれる
+    fmt.Println(<-c)              // チャネルからの値を取得するので <-c とする。この演算子は受信演算子と呼ばれる
 }
 
 func main() {
@@ -24,9 +24,9 @@ func main() {
     c := make(chan string, 1)
     // c <- "hello then"
     receive(c, "hello")
-    fmt.Println(<-c)              // チャンネルから値を取得する場合には <-c とする。この演算子は受信演算子と呼ばれる(重要なので2回目)
+    fmt.Println(<-c)              // チャネルから値を取得する場合には <-c とする。この演算子は受信演算子と呼ばれる(重要なので2回目)
 
     c = make(chan string, 1)
-    c <- "world"                 // 送信する値を設定する際には「c <- "message」とする
+    c <- "world"                 // 送信する値を設定する際には「c <- "message"」とすると、"message"をチャネルcに伝えることができる。
     send(c)
 }
