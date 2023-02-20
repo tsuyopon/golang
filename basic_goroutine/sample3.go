@@ -1,28 +1,40 @@
 /*
- * 関数の引数でチャネルを受け取る(Directions)
- *
- * 参考資料: https://qiita.com/ta1m1kam/items/fc798cdd6a4eaf9a7d5e
+ * goroutineの終了方法
+ * 参考: https://jxck.hatenablog.com/entry/20130414/1365960707
  */
+package main
 
-// 送信として定義しているので「chan<-」として定義されている
-func ping(pings chan<- string, msg string) {
-    // msgをpingsに送信しているので送信チャネル
-    pings <- msg
-}
+import (
+    "log"
+    "time"      // for runtime.Goexit()
+    "runtime"   // for time.Sleep()
+)
 
-// 下記関数内では2つのチャネルが使われていて
-// 1つめのチャネルがpingsを受信したらmsgに格納しています。
-// 2つめのチャネルがmsgを受信したらpongsチャネルに書き込んでいます。
-// pong関数の引数定義はpingsは「<-chan」、pongsは「chan<-」と異なっていることに注意してください。
-func pong(pings <-chan string, pongs chan<- string) {
-    msg := <-pings
-    pongs <- msg
-}
 
 func main() {
-    pings := make(chan string, 1)
-    pongs := make(chan string, 1)
-    ping(pings, "Hello")
-    pong(pings, pongs)
-    fmt.Println(<-pongs)
+
+	// 関数が終わる
+	go func() {
+		log.Println("end")
+	}()
+
+	// returnを記述する
+	go func() {
+		log.Println("return")
+		return
+	}()
+
+	// runtime.Goexit()で終わる
+	go func() {
+		log.Println("exit")
+		runtime.Goexit()
+	}()
+
+	// goroutineの数を表示する
+	log.Println("before sleep count:", runtime.NumGoroutine())
+
+	time.Sleep(time.Second)
+
+	// goroutineの数を表示する
+	log.Println("after sleep count:", runtime.NumGoroutine())
 }
