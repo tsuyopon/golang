@@ -11,7 +11,9 @@ func p(i interface{}) {
 }
 
 // 複数引数を指定する
-func add(i int, j int) int {  // func add(i, j int) int {   と記述することも可能
+// 関数の２つ以上の引数が同じ型である場合には、最後の型を残して省略して記述できます。 ( see: https://go-tour-jp.appspot.com/basics/5 )
+// 以下の例では1つ目も2つ目もint型なので「func add(i, j int) int { 」と記述可能です。
+func add(i int, j int) int {
     return i + j
 }
 
